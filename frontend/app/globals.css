@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+
+  --surface: #f8fafc;
+
+  --border: #e2e8f0;
+
+  --primary: #111827;
+  --secondary: #475569;
+  --muted: #64748b;
+
+  --accent: #2563eb;
+
+  --radius: 12px;
+
+  --navbar-height: 64px;
+
+  --sidebar-width: 250px;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+
+  --surface: #1e293b;
+
+  --border: #334155;
+
+  --primary: #f8fafc;
+  --secondary: #cbd5e1;
+  --muted: #94a3b8;
+
+  --accent: #3b82f6;
+}
+
+/* ------------------------------
+   Base
+------------------------------ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  overflow-x: hidden;
+}
+
+/* ------------------------------
+   Links
+------------------------------ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ------------------------------
+   Buttons
+------------------------------ */
+
+button {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* ------------------------------
+   Scrollbar
+------------------------------ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ------------------------------
+   Selection
+------------------------------ */
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* ------------------------------
+   Utility Classes
+------------------------------ */
+
+.container {
+  width: min(1200px, 90%);
+  margin-inline: auto;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.border-default {
+  border: 1px solid var(--border);
+}

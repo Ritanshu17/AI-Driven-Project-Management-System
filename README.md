@@ -142,7 +142,7 @@ cd engineering-workspace/frontend
 ## 2. Install Dependencies
 
 ```bash
-npm install
+npm install lucide-react zustand recharts @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities next-themes
 ```
 
 ---
