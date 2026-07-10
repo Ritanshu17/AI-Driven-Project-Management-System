@@ -34,7 +34,7 @@ const navigation = [
 export default function Sidebar() {
   const pathname = usePathname();
   const { isCollapsed } = useSidebarStore();
-
+  
   return (
     <aside className= {`flex h-screen flex-col border-r border-[var(--border)] bg-[var(--surface)] transition-all duration-300 ease-in-out ${
       isCollapsed ? "w-20" : "w-64"
