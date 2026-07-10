@@ -100,7 +100,9 @@ export default function Sidebar() {
                       : "hover:bg-[var(--border)]"
                   }`}
                 >
-                  <Icon size={20} />
+                  <Icon size={20} 
+                  className="shrink-0"
+                  />
 
                   {!isCollapsed && <span>{item.name}</span>}
                 </Link>
