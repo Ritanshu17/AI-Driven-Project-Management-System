@@ -10,7 +10,9 @@ import {
 import DashboardHeader from "./DashboardHeader";
 import StatsGrid from "./StatsGrid";
 import RecentActivity from "./RecentActivity";
-
+import ProjectProgress from "./ProjectProgress";
+import QuickActions from "./QuickActions";
+import TeamMembers from "./TeamMembers";
 export default function DashboardView() {
   return (
     <main className="space-y-8">
@@ -18,10 +20,22 @@ export default function DashboardView() {
       <DashboardHeader />
 
       <StatsGrid />
-        <div className="grid gap-6 lg:grid-cols-2">
+
+      <div className="grid gap-6 lg:grid-cols-2">
 
         <RecentActivity />
-        </div>
+
+        <ProjectProgress/>
+
+      </div>
+
+      <div className="grid gap-6 lg:grid-cols-2">
+
+        <QuickActions />
+
+        <TeamMembers />
+
+      </div>
 
     </main>
   );
