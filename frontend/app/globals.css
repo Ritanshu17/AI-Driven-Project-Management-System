@@ -133,3 +133,62 @@ button {
 .border-default {
   border: 1px solid var(--border);
 }
+
+/* ==========================================================
+   Aurora Background
+========================================================== */
+
+.bg-grid {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.aurora {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 9999px;
+  filter: blur(120px);
+  opacity: 0.18;
+  animation: auroraMove 22s ease-in-out infinite alternate;
+}
+
+.aurora-1 {
+  top: -180px;
+  left: -120px;
+  background: #3b82f6;
+}
+
+.aurora-2 {
+  top: 80px;
+  right: -160px;
+  background: #8b5cf6;
+  animation-duration: 28s;
+}
+
+.aurora-3 {
+  bottom: -220px;
+  left: 35%;
+  background: #06b6d4;
+  animation-duration: 32s;
+}
+
+.dark .aurora {
+  opacity: 0.25;
+}
+
+@keyframes auroraMove {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  50% {
+    transform: translate(60px, -40px) scale(1.15);
+  }
+
+  100% {
+    transform: translate(-40px, 60px) scale(0.95);
+  }
+}
