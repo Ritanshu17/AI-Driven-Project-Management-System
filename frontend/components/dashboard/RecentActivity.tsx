@@ -3,16 +3,15 @@
 import { activities } from "@/data/activity";
 import ActivityItem from "./ActivityItem";
 
+import DashboardSection from "./DashboardSection";
+
 export default function RecentActivity() {
   return (
-    <section className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6">
-
-      <h2 className="mb-6 text-xl font-semibold">
-        Recent Activity
-      </h2>
-
+    <DashboardSection
+      title="Recent Activity"
+      subtitle="Latest updates from your workspace"
+    >
       <div className="space-y-4">
-
         {activities.map((activity) => (
           <ActivityItem
             key={activity.id}
@@ -22,9 +21,7 @@ export default function RecentActivity() {
             type={activity.type}
           />
         ))}
-
       </div>
-
-    </section>
+    </DashboardSection>
   );
 }

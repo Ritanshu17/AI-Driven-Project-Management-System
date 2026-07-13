@@ -2,29 +2,47 @@
 
 import { teamMembers } from "@/data/team";
 import TeamMemberCard from "./TeamMemberCard";
-
+import DashboardSection from "./DashboardSection";
 export default function TeamMembers() {
   return (
-    <section className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6">
 
-      <h2 className="mb-6 text-xl font-semibold">
-        Team Members
-      </h2>
+  <DashboardSection
+  title="Team Members"
+  subtitle="Current workspace contributors"
+>
+  <div className="space-y-4">
+    {teamMembers.map((member) => (
+      <TeamMemberCard
+        key={member.id}
+        name={member.name}
+        role={member.role}
+        status={member.status}
+        project={member.project}
+      />
+    ))}
+  </div>
+</DashboardSection>
+  )
+};
 
-      <div className="space-y-4">
+    // <section className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6">
 
-        {teamMembers.map((member) => (
-          <TeamMemberCard
-            key={member.id}
-            name={member.name}
-            role={member.role}
-            status={member.status}
-            project={member.project}
-          />
-        ))}
+    //   <h2 className="mb-6 text-xl font-semibold">
+    //     Team Members
+    //   </h2>
 
-      </div>
+    //   <div className="space-y-4">
 
-    </section>
-  );
-}
+    //     {teamMembers.map((member) => (
+    //       <TeamMemberCard
+    //         key={member.id}
+    //         name={member.name}
+    //         role={member.role}
+    //         status={member.status}
+    //         project={member.project}
+    //       />
+    //     ))}
+
+    //   </div>
+
+    // </section>
