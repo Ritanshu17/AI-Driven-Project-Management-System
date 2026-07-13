@@ -2,7 +2,7 @@
 
 import {
   CheckCircle2,
-  AlertCircle,
+  AlertTriangle,
   Info,
 } from "lucide-react";
 
@@ -10,7 +10,7 @@ interface ActivityItemProps {
   title: string;
   description: string;
   time: string;
-  type: "success" | "info" | "warning";
+  type: "success" | "warning" | "info";
 }
 
 export default function ActivityItem({
@@ -19,44 +19,68 @@ export default function ActivityItem({
   time,
   type,
 }: ActivityItemProps) {
-
-  const iconMap = {
-    success: CheckCircle2,
-    info: Info,
-    warning: AlertCircle,
+  const styles = {
+    success: {
+      icon: CheckCircle2,
+      color: "text-emerald-500",
+      bg: "bg-emerald-500/10",
+    },
+    warning: {
+      icon: AlertTriangle,
+      color: "text-amber-500",
+      bg: "bg-amber-500/10",
+    },
+    info: {
+      icon: Info,
+      color: "text-blue-500",
+      bg: "bg-blue-500/10",
+    },
   };
 
-  const colorMap = {
-    success: "text-green-500",
-    info: "text-blue-500",
-    warning: "text-yellow-500",
-  };
-
-  const Icon = iconMap[type];
+  const Icon = styles[type].icon;
 
   return (
-    <div className="flex gap-4 rounded-xl border border-[var(--border)] p-4 transition hover:border-[var(--accent)]">
+    <div
+      className="
+        group
+        flex
+        items-start
+        gap-4
+        rounded-xl
+        p-4
+        transition-all
+        duration-300
+        hover:bg-[var(--background)]
+      "
+    >
+      {/* Icon */}
 
-      <Icon
-        className={colorMap[type]}
-        size={22}
-      />
+      <div
+        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${styles[type].bg}`}
+      >
+        <Icon
+          size={20}
+          className={styles[type].color}
+        />
+      </div>
+
+      {/* Content */}
 
       <div className="flex-1">
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-4">
 
-          <h4 className="font-medium">
+          <h3 className="font-semibold transition-colors duration-300 group-hover:text-[var(--accent)]">
             {title}
-          </h4>
+          </h3>
 
-          <span className="text-xs text-[var(--muted)]">
+          <span className="text-xs text-[var(--muted)] whitespace-nowrap">
             {time}
           </span>
 
         </div>
 
-        <p className="mt-1 text-sm text-[var(--muted)]">
+        <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
           {description}
         </p>
 

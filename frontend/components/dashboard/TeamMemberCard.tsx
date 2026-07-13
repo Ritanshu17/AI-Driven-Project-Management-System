@@ -21,48 +21,80 @@ export default function TeamMemberCard({
     .toUpperCase();
 
   return (
-    <div className="flex items-center justify-between rounded-xl border border-[var(--border)] p-4 transition-all duration-300 hover:border-[var(--accent)]">
+    <div
+      className="
+        group
+        flex
+        items-center
+        justify-between
+        rounded-2xl
+        border
+        border-[var(--border)]
+        bg-[var(--background)]
+        p-5
+        transition-all
+        duration-300
+        hover:-translate-y-1
+        hover:border-[var(--accent)]
+        hover:shadow-lg
+      "
+    >
+      {/* Left */}
 
       <div className="flex items-center gap-4">
 
         {/* Avatar */}
 
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--accent)] text-sm font-bold text-white">
-          {initials}
+        <div className="relative">
+
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--accent)] text-lg font-bold text-white shadow-md">
+            {initials}
+          </div>
+
+          <span
+            className={`absolute bottom-0 right-0 h-4 w-4 rounded-full border-2 border-[var(--background)] ${
+              status === "online"
+                ? "bg-emerald-500"
+                : "bg-gray-400"
+            }`}
+          />
+
         </div>
 
-        {/* User Info */}
+        {/* Info */}
 
         <div>
 
-          <h4 className="font-semibold">
+          <h3 className="font-semibold transition-colors duration-300 group-hover:text-[var(--accent)]">
             {name}
-          </h4>
+          </h3>
 
-          <p className="text-sm text-[var(--muted)]">
+          <p className="mt-1 text-sm text-[var(--muted)]">
             {role}
           </p>
+
+          <span className="mt-3 inline-block rounded-full bg-[var(--accent)]/10 px-3 py-1 text-xs font-medium text-[var(--accent)]">
+            {project}
+          </span>
 
         </div>
 
       </div>
 
-      {/* Status */}
+      {/* Right */}
 
       <div className="text-right">
 
-        <span
-          className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${
+        <p
+          className={`text-sm font-semibold ${
             status === "online"
-              ? "bg-green-100 text-green-600"
-              : "bg-gray-200 text-gray-600"
+              ? "text-emerald-500"
+              : "text-gray-500"
           }`}
         >
-          {status}
-        </span>
-
-        <p className="mt-2 text-xs text-[var(--muted)]">
-          {project}
+          {status === "online"
+            ? "Active Now"
+            : "Offline"}
         </p>
 
       </div>

@@ -17,7 +17,7 @@ export default function RecentActivity() {
       </button>
     }
 >
-      <div className="space-y-4">
+      <div className="divide-y divide-[var(--border)]">
         {activities.map((activity) => (
           <ActivityItem
             key={activity.id}

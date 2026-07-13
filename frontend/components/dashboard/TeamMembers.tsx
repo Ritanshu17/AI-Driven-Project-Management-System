@@ -10,7 +10,7 @@ export default function TeamMembers() {
   title="Team Members"
   subtitle="Current workspace contributors"
 >
-  <div className="space-y-4">
+  <div className="space-y-5">
     {teamMembers.map((member) => (
       <TeamMemberCard
         key={member.id}
@@ -25,24 +25,3 @@ export default function TeamMembers() {
   )
 };
 
-    // <section className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6">
-
-    //   <h2 className="mb-6 text-xl font-semibold">
-    //     Team Members
-    //   </h2>
-
-    //   <div className="space-y-4">
-
-    //     {teamMembers.map((member) => (
-    //       <TeamMemberCard
-    //         key={member.id}
-    //         name={member.name}
-    //         role={member.role}
-    //         status={member.status}
-    //         project={member.project}
-    //       />
-    //     ))}
-
-    //   </div>
-
-    // </section>

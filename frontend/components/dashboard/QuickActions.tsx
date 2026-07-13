@@ -10,6 +10,8 @@ import {
   Settings,
 } from "lucide-react";
 
+
+
 const actions = [
   {
     title: "New Project",
@@ -39,6 +41,8 @@ export default function QuickActions() {
       title="Quick Actions"
       subtitle="Frequently used workspace actions"
     >
+
+      {/* map function */}
       <div className="grid grid-cols-2 gap-4">
 
         {actions.map((action) => (
@@ -51,6 +55,7 @@ export default function QuickActions() {
         ))}
 
       </div>
+      
     </DashboardSection>
   );
 }
