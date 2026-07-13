@@ -1,39 +1,31 @@
 "use client";
 
-import {
-  FolderKanban,
-  CheckSquare,
-  Users,
-  Timer,
-} from "lucide-react";
-
 import DashboardHeader from "./DashboardHeader";
 import StatsGrid from "./StatsGrid";
 import RecentActivity from "./RecentActivity";
 import ProjectProgress from "./ProjectProgress";
 import QuickActions from "./QuickActions";
 import TeamMembers from "./TeamMembers";
+
 export default function DashboardView() {
   return (
-    <main className="space-y-8">
+    <main className="min-h-screen bg-[var(--background)]">
 
-      <DashboardHeader />
+      <div className="w-full max-w-[1700px] px-8 py-8">
 
-      <StatsGrid />
+        <DashboardHeader />
 
-      <div className="grid gap-6 lg:grid-cols-2">
+        <StatsGrid />
 
-        <RecentActivity />
+        <div className="grid gap-8 lg:grid-cols-2">
+          <RecentActivity />
+          <ProjectProgress />
+        </div>
 
-        <ProjectProgress/>
-
-      </div>
-
-      <div className="grid gap-6 lg:grid-cols-2">
-
-        <QuickActions />
-
-        <TeamMembers />
+        <div className="grid gap-8 lg:grid-cols-2">
+          <QuickActions />
+          <TeamMembers />
+        </div>
 
       </div>
 

@@ -31,35 +31,49 @@ export default function StatCard({
   const Icon = iconMap[icon];
 
   return (
-    <div
-      className={
-        "group rounded-2xl border border-[var(--border)] bg-[var(--surface)] " +
-        "p-6 transition-all duration-300 hover:-translate-y-1 " +
-        "hover:border-[var(--accent)] hover:shadow-lg"
-      }
-    >
-      {/* Icon */}
-      <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--accent)]/10 transition-colors duration-300 group-hover:bg-[var(--accent)]/20">
+  <div
+    className="group flex min-h-[210px] flex-col justify-between rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)] hover:shadow-xl"
+  >
+    {/* Top Section */}
+    <div className="space-y-5">
+
+      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--accent)]/10 transition-all duration-300 group-hover:bg-[var(--accent)]/20">
+
         <Icon
-          size={24}
+          size={26}
           className="text-[var(--accent)]"
         />
+
       </div>
 
-      {/* Title */}
-      <h3 className="text-sm font-medium text-[var(--muted)]">
-        {title}
-      </h3>
+      <div>
 
-      {/* Value */}
-      <p className="mt-2 text-4xl font-bold tracking-tight">
-        {value}
-      </p>
+        <p className="text-sm font-medium uppercase tracking-wide text-[var(--muted)]">
+          {title}
+        </p>
 
-      {/* Description */}
-      <p className="mt-3 text-sm text-[var(--muted)]">
+        <h2 className="mt-2 text-5xl font-bold tracking-tight">
+          {value}
+        </h2>
+
+      </div>
+
+    </div>
+
+    {/* Bottom Section */}
+
+    <div className="flex items-center justify-between">
+
+      <p className="text-sm text-[var(--muted)]">
         {description}
       </p>
+
+      <span className="rounded-full bg-[var(--accent)]/10 px-3 py-1 text-xs font-medium text-[var(--accent)]">
+        Live
+      </span>
+
     </div>
-  );
-}
+
+  </div>
+)
+};

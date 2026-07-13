@@ -2,7 +2,7 @@
 
 import { activities } from "@/data/activity";
 import ActivityItem from "./ActivityItem";
-
+import { ChevronRight } from "lucide-react";
 import DashboardSection from "./DashboardSection";
 
 export default function RecentActivity() {
@@ -10,7 +10,13 @@ export default function RecentActivity() {
     <DashboardSection
       title="Recent Activity"
       subtitle="Latest updates from your workspace"
-    >
+       action={
+      <button className="flex items-center gap-1 text-sm text-[var(--accent)] transition hover:gap-2">
+        View All
+        <ChevronRight size={16} />
+      </button>
+    }
+>
       <div className="space-y-4">
         {activities.map((activity) => (
           <ActivityItem
