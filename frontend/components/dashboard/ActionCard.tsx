@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { LucideIcon } from "lucide-react";
+import Card from "@/components/ui/Card"
 
 interface ActionCardProps {
   title: string;

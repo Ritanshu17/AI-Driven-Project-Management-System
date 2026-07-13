@@ -7,6 +7,8 @@ import {
   Timer,
 } from "lucide-react";
 
+import Card from "@/components/ui/Card"
+
 interface StatCardProps {
   title: string;
   value: string | number;
@@ -31,8 +33,8 @@ export default function StatCard({
   const Icon = iconMap[icon];
 
   return (
-  <div
-    className="group flex min-h-[210px] flex-col justify-between rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)] hover:shadow-xl"
+  <Card
+    className="p-6"
   >
     {/* Top Section */}
     <div className="space-y-5">
@@ -74,6 +76,6 @@ export default function StatCard({
 
     </div>
 
-  </div>
+  </Card>
 )
 };

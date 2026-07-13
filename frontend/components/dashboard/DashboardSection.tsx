@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import Card from "@/components/ui/Card"
 
 interface DashboardSectionProps {
   title: string;
@@ -16,8 +17,7 @@ export default function DashboardSection({
   children,
 }: DashboardSectionProps) {
   return (
-    <section
-      className=" rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-sm transition-all duration-300 hover:shadow-md"
+    <Card className="p-6"
     >
       {/* Header */}
 
@@ -53,6 +53,6 @@ export default function DashboardSection({
 
       {children}
 
-    </section>
+    </Card>
   );
 }

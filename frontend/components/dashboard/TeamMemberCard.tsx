@@ -1,4 +1,5 @@
 "use client";
+import Card from "@/components/ui/Card"
 
 interface TeamMemberCardProps {
   name: string;
@@ -21,23 +22,8 @@ export default function TeamMemberCard({
     .toUpperCase();
 
   return (
-    <div
-      className="
-        group
-        flex
-        items-center
-        justify-between
-        rounded-2xl
-        border
-        border-[var(--border)]
-        bg-[var(--background)]
-        p-5
-        transition-all
-        duration-300
-        hover:-translate-y-1
-        hover:border-[var(--accent)]
-        hover:shadow-lg
-      "
+    <Card
+      className=" p-6"
     >
       {/* Left */}
 
@@ -99,6 +85,6 @@ export default function TeamMemberCard({
 
       </div>
 
-    </div>
+    </Card>
   );
 }

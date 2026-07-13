@@ -1,6 +1,7 @@
 "use client";
 
 import { Users } from "lucide-react";
+import Card from "@/components/ui/Card"
 
 interface ProgressCardProps {
   name: string;
@@ -29,19 +30,8 @@ export default function ProgressCard({
       : "text-amber-500";
 
   return (
-    <div
-      className="
-        rounded-2xl
-        border
-        border-[var(--border)]
-        bg-[var(--background)]
-        p-5
-        transition-all
-        duration-300
-        hover:-translate-y-1
-        hover:border-[var(--accent)]
-        hover:shadow-lg
-      "
+    <Card
+      className="p-6"
     >
       {/* Header */}
 
@@ -96,6 +86,6 @@ export default function ProgressCard({
 
       </div>
 
-    </div>
+    </Card>
   );
 }
