@@ -13,7 +13,7 @@ export default function Card({
 }: CardProps) {
   return (
     <div
-      className={` rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)] hover:shadow-lg ${className}`}
+      className={` rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[var(--accent)] hover:shadow-lg ${className}`}
     >
       {children}
     </div>
