@@ -7,6 +7,8 @@ import ProjectProgress from "./ProjectProgress";
 import QuickActions from "./QuickActions";
 import TeamMembers from "./TeamMembers";
 
+
+
 export default function DashboardView() {
   return (
     <main className="min-h-screen bg-[var(--background)]">
@@ -27,53 +29,13 @@ export default function DashboardView() {
           <TeamMembers />
         </div>
 
+        <div className="flex gap-3 flex-wrap">
+
+
+      </div>
+
       </div>
 
     </main>
   );
 }
-
-// import DashboardHeader from "./DashboardHeader";
-// import StatCard from "./StatCard";
-
-// export default function DashboardView() {
-//   return (
-//     <main className="space-y-8">
-
-//       <DashboardHeader />
-
-//       <div className="grid gap-6 lg:grid-cols-4">
-
-//         <StatCard
-//           title="Projects"
-//           value={12}
-//           description="+2 Active"
-//           icon={FolderKanban}
-//         />
-
-//         <StatCard
-//           title="Tasks"
-//           value={148}
-//           description="32 Completed"
-//           icon={CheckSquare}
-//         />
-
-//         <StatCard
-//           title="Members"
-//           value={8}
-//           description="All Online"
-//           icon={Users}
-//         />
-
-//         <StatCard
-//           title="Sprint"
-//           value="92%"
-//           description="Completion"
-//           icon={Timer}
-//         />
-
-//       </div>
-
-//     </main>
-//   );
-// }
