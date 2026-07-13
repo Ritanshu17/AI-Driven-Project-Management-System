@@ -34,7 +34,8 @@ Engineering Workspace combines project management, team collaboration, and AI-po
 - [x] Kanban Board
 - [x] Theme Switching
 - [x] Charts
-- [ ] Responsive Design
+- [x] Responsive Design
+- [x] Polishing UI/UX
 
 ---
 
