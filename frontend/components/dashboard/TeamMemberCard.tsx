@@ -1,6 +1,8 @@
 "use client";
 
 import Card from "@/components/ui/Card"
+import { Avatar } from "../ui";
+
 interface TeamMemberCardProps {
   name: string;
   role: string;
@@ -15,11 +17,11 @@ export default function TeamMemberCard({
   project,
 }: TeamMemberCardProps) {
 
-  const initials = name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .toUpperCase();
+
+<Avatar
+  name={name}
+  status={status}
+/>
 
   return (
     <Card
@@ -29,23 +31,6 @@ export default function TeamMemberCard({
 
       <div className="flex items-center gap-4">
 
-        {/* Avatar */}
-
-        <div className="relative">
-
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--accent)] text-lg font-bold text-white shadow-md">
-            {initials}
-          </div>
-
-          <span
-            className={`absolute bottom-0 right-0 h-4 w-4 rounded-full border-2 border-[var(--background)] ${
-              status === "online"
-                ? "bg-emerald-500"
-                : "bg-gray-400"
-            }`}
-          />
-
-        </div>
 
         {/* Info */}
 
@@ -84,6 +69,7 @@ export default function TeamMemberCard({
         </p>
 
       </div>
+
 
     </Card>
   );

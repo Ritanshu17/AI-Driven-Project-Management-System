@@ -9,6 +9,9 @@ import TeamMembers from "./TeamMembers";
 
 
 
+
+
+
 export default function DashboardView() {
   return (
     <main className="min-h-screen bg-[var(--background)]">
@@ -32,8 +35,9 @@ export default function DashboardView() {
         <div className="flex gap-3 flex-wrap">
 
 
-      </div>
 
+
+      </div>
       </div>
 
     </main>
