@@ -19,9 +19,10 @@ const priorityOptions = [
 const statusOptions = [
   { label: "All Status", value: "all" },
   { label: "Planning", value: "planning" },
-  { label: "In Progress", value: "progress" },
+  { label: "In Progress", value: "in progress" },
   { label: "Completed", value: "completed" },
 ];
+
 
 const sortOptions = [
   { label: "Recently Updated", value: "updated" },
@@ -33,6 +34,13 @@ const sortOptions = [
 interface ProjectToolbarProps {
   search: string;
   onSearchChange: (value: string) => void;
+
+  priority: string;
+  onPriorityChange: (value: string) => void;
+
+  status: string;
+  onStatusChange: (value: string) => void;
+
   onCreateProject: () => void;
 }
 
@@ -40,6 +48,13 @@ interface ProjectToolbarProps {
 export default function ProjectToolbar({
   search,
   onSearchChange,
+
+  priority,
+  onPriorityChange,
+
+  status,
+  onStatusChange,
+
   onCreateProject,
 }: ProjectToolbarProps) {
   return (
@@ -63,8 +78,10 @@ export default function ProjectToolbar({
       <div className="w-full lg:w-48">
 
         <Select
+          value={priority}
+          onChange={(e) => onPriorityChange(e.target.value)}
           options={priorityOptions}
-        />
+        />  
 
       </div>
 
@@ -73,6 +90,8 @@ export default function ProjectToolbar({
       <div className="w-full lg:w-48">
 
         <Select
+          value={status}
+          onChange={(e) => onStatusChange(e.target.value)}
           options={statusOptions}
         />
 

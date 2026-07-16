@@ -14,13 +14,30 @@ export default function ProjectsView() {
   const [open, setOpen] = useState(false);
   const [projects, setProjects] = useState(initialProjects);
   const [search, setSearch] = useState("");
+  const [priorityFilter, setPriorityFilter] = useState("all");
+  const [statusFilter, setStatusFilter] = useState("all");
   const handleCreateProject = (project: Project) => {
   setProjects((prev) => [...prev, project]);
 };
-const filteredProjects = projects.filter((project) =>
-  project.name.toLowerCase().includes(search.toLowerCase()) ||
-  project.description.toLowerCase().includes(search.toLowerCase())
-);
+const filteredProjects = projects.filter((project) => {
+  const matchesSearch =
+    project.name.toLowerCase().includes(search.toLowerCase()) ||
+    project.description.toLowerCase().includes(search.toLowerCase());
+
+  const matchesPriority =
+    priorityFilter === "all" ||
+    project.priority.toLowerCase() === priorityFilter;
+
+  const matchesStatus =
+    statusFilter === "all" ||
+    project.status.toLowerCase().replace(" ", "-") === statusFilter;
+
+  return (
+    matchesSearch &&
+    matchesPriority &&
+    matchesStatus
+  );
+});
 
   return (
     <main className="min-h-screen space-y-8">
@@ -31,10 +48,17 @@ const filteredProjects = projects.filter((project) =>
       />
 
       <ProjectToolbar
-          search={search}
-          onSearchChange={setSearch}
-          onCreateProject={() => setOpen(true)}
-      />
+        search={search}
+        onSearchChange={setSearch}
+
+        priority={priorityFilter}
+        onPriorityChange={setPriorityFilter}
+
+        status={statusFilter}
+        onStatusChange={setStatusFilter}
+
+        onCreateProject={() => setOpen(true)}
+    />
 
       <ProjectGrid
           projects={filteredProjects}
