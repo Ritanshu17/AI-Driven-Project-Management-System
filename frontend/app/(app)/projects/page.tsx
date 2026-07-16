@@ -1,11 +1,5 @@
-export default function ProjectsPage() {
-  return (
-    <div>
-      <h1 className="text-3xl font-bold">Projects</h1>
+import ProjectsView from "@/components/projects/ProjectsView";
 
-      <p className="mt-2 text-[var(--muted)]">
-        Project Management Page
-      </p>
-    </div>
-  );
+export default function ProjectsPage() {
+  return <ProjectsView />;
 }
