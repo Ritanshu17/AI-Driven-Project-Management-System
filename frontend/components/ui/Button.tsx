@@ -12,7 +12,8 @@ type Variant =
 type Size =
   | "sm"
   | "md"
-  | "lg";
+  | "lg"
+  | "icon";
 
 interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -59,6 +60,7 @@ export default function Button({
     sm: "h-9 px-3 text-sm",
     md: "h-11 px-5",
     lg: "h-12 px-6 text-lg",
+    icon: "h-11 w-11 p-0",
   };
 
   return (
