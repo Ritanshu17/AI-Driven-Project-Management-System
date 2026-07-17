@@ -15,7 +15,8 @@ export const projects: Project[] = [
 
     members: 8,
 
-    deadline: "2026-08-15"
+    deadline: "2026-08-15",
+    order : 0
   },
 
   {
@@ -33,7 +34,9 @@ export const projects: Project[] = [
 
     members: 5,
 
-    deadline: "2026-07-01"
+    deadline: "2026-07-01",
+
+    order: 1
   },
 
   {
@@ -51,6 +54,8 @@ export const projects: Project[] = [
 
     members: 6,
 
-    deadline: "2026-09-30"
+    deadline: "2026-09-30",
+
+    order: 2
   },
 ];

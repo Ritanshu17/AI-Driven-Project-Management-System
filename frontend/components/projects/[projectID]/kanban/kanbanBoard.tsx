@@ -1,6 +1,6 @@
 "use client";
 
-import KanbanColumn from "@/components/projects/kanban/kanbanColumn";
+import KanbanColumn from "@/components/projects/[projectID]/kanban/kanbanColumn";
 import { Task } from "@/components/projects/data/types";
 import TaskCard from "./TaskCard";
 import {

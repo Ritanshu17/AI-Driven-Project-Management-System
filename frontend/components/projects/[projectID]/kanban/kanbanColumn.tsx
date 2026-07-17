@@ -3,7 +3,7 @@
 import TaskCard from "./TaskCard";
 import { Task } from "@/components/projects/data/types";
 import { useDroppable } from "@dnd-kit/core";
-import DraggableTaskCard from "@/components/projects/kanban/DraggableTaskCard";
+import DraggableTaskCard from "@/components/projects/[projectID]/kanban/DraggableTaskCard";
 
 
 interface KanbanColumnProps {

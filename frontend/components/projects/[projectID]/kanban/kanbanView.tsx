@@ -1,7 +1,7 @@
 "use client";
 
 import PageHeader from "@/components/ui/PageHeader";
-import KanbanBoard from "@/components/projects/kanban/kanbanBoard";
+import KanbanBoard from "@/components/projects/[projectID]/kanban/kanbanBoard";
 
 export default function KanbanView() {
   return (

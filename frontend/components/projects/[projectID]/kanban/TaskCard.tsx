@@ -2,7 +2,9 @@
 
 import Badge from "@/components/ui/Badge";
 import { Task } from "@/components/projects/data/types";
-
+import { useState } from "react";
+import { Button } from "@/components/ui";
+import TaskModal from "./TaskModal";
 
 interface TaskCardProps {
   task: Task;
@@ -19,6 +21,8 @@ export default function TaskCard({ task }: TaskCardProps) {
       : task.priority === "Medium"
       ? "info"
       : "default";
+    
+  const [taskModalOpen, setTaskModalOpen] = useState(false);
 
 
   return (
@@ -41,6 +45,15 @@ export default function TaskCard({ task }: TaskCardProps) {
       <p className="mt-4 text-xs text-[var(--muted-foreground)]">
         {task.assignee}
       </p>
+
+      <Button onClick={() => setTaskModalOpen(true)}>
+          Add Task
+      </Button>
+
+      <TaskModal
+        open={taskModalOpen}
+        onOpenChange={setTaskModalOpen}
+      />
     </div>
   );
 }

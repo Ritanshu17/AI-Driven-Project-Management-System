@@ -10,7 +10,7 @@ import ProjectGrid from "./ProjectGrid";
 import CreateProjectModal from "./CreateProjectModal";
 import { Project, Task } from "@/components/projects/data/types";
 import ProjectTable from "./ProjectTable";
-import KanbanBoard from "./kanban/kanbanBoard";
+import KanbanBoard from "./[projectID]/kanban/kanbanBoard";
 import { DragEndEvent, DragStartEvent } from "@dnd-kit/core";
 
 
