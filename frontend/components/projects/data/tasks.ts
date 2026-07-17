@@ -8,6 +8,7 @@ export const tasks: Task[] = [
     priority: "High",
     status: "Todo",
     assignee: "Ritanshu",
+    order:0,
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const tasks: Task[] = [
     priority: "Critical",
     status: "In Progress",
     assignee: "Alex",
+    order:1,
   },
   {
     id: 3,
@@ -24,5 +26,6 @@ export const tasks: Task[] = [
     priority: "Medium",
     status: "Done",
     assignee: "Sarah",
+    order:2,
   },
 ];

@@ -2,7 +2,7 @@
 
 import Badge from "@/components/ui/Badge";
 import { Task } from "@/components/projects/data/types";
-import { useDraggable } from "@dnd-kit/core";
+
 
 interface TaskCardProps {
   task: Task;
@@ -19,27 +19,12 @@ export default function TaskCard({ task }: TaskCardProps) {
       : task.priority === "Medium"
       ? "info"
       : "default";
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-  } = useDraggable({
-    id: task.id,
-  });
-  const style = transform
-  ? {
-      transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-    }
-  : undefined;    
+
 
   return (
     <div
-      ref={setNodeRef}
-      {...listeners}
-      {...attributes}
-      style={style}
-      className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 shadow-sm cursor-grab active:cursor-grabbing"
+
+      className=" rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 shadow-sm cursor-grab active:cursor-grabbing transition-all duration-200 hover:shadow-md hover:-translate-y-1 transition-transform duration-200 ease-out"
     >
       <Badge variant={priorityVariant}>
         {task.priority}

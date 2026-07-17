@@ -7,6 +7,7 @@ export interface Project {
   status: string;
   members: number;
   deadline: string;
+  order: number;
 }
 
 export interface Task {
@@ -24,4 +25,5 @@ export interface Task {
     | "Done";
 
   assignee: string;
+  order: number;
 }

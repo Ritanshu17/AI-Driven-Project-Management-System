@@ -11,7 +11,7 @@ import CreateProjectModal from "./CreateProjectModal";
 import { Project, Task } from "@/components/projects/data/types";
 import ProjectTable from "./ProjectTable";
 import KanbanBoard from "./kanban/kanbanBoard";
-import { DragEndEvent } from "@dnd-kit/core";
+import { DragEndEvent, DragStartEvent } from "@dnd-kit/core";
 
 
 export default function ProjectsView() {
@@ -19,6 +19,7 @@ export default function ProjectsView() {
   const [open, setOpen] = useState(false); 
   const [projects, setProjects] = useState(initialProjects);
   const [tasks, setTasks] = useState(initialTasks);
+  const [activeTask, setActiveTask] = useState<Task | null>(null);
   const [search, setSearch] = useState("");
   const [priorityFilter, setPriorityFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -27,23 +28,53 @@ export default function ProjectsView() {
   const handleCreateProject = (project: Project) => {
   setProjects((prev) => [...prev, project]);
 };
+
+const updateTaskStatus = (
+  taskId: number,
+  newStatus: Task["status"]
+) => {
+  setTasks((prev) =>
+    prev.map((task) =>
+      task.id === taskId
+        ? {
+            ...task,
+            status: newStatus,
+          }
+        : task
+    )
+  );
+
+  // TODO:
+  // await updateTaskStatusAPI(taskId, newStatus);
+};
+
+
 const handleTaskDragEnd = (
   event: DragEndEvent
 ) => {
   const { active, over } = event;
 
+  setActiveTask(null);
+
   if (!over) return;
 
-  setTasks((prev) =>
-    prev.map((task) =>
-      task.id === active.id
-        ? {
-            ...task,
-            status: over.id as Task["status"],
-          }
-        : task
-    )
+  updateTaskStatus(
+    active.id as number,
+    over.id as Task["status"]
   );
+};
+
+
+const handleTaskDragStart = (
+  event: DragStartEvent
+) => {
+  const task = tasks.find(
+    (t) => t.id === event.active.id
+  );
+
+  if (task) {
+    setActiveTask(task);
+  }
 };
 
 const filteredProjects = projects
@@ -81,6 +112,7 @@ const filteredProjects = projects
         return b.id - a.id;
     }
   });
+
   return (
     <main className="min-h-screen space-y-8">
 
@@ -121,8 +153,10 @@ const filteredProjects = projects
       {view === "kanban" && (
         <KanbanBoard
           tasks={tasks}
+          activeTask={activeTask}
+          onDragStart={handleTaskDragStart}
           onDragEnd={handleTaskDragEnd}
-      />
+        />
       )}
 
       <CreateProjectModal
