@@ -41,6 +41,9 @@ interface ProjectToolbarProps {
   status: string;
   onStatusChange: (value: string) => void;
 
+  sort: string;
+  onSortChange: (value: string) => void;
+
   onCreateProject: () => void;
 }
 
@@ -55,6 +58,8 @@ export default function ProjectToolbar({
   status,
   onStatusChange,
 
+  sort,
+  onSortChange,
   onCreateProject,
 }: ProjectToolbarProps) {
   return (
@@ -102,6 +107,8 @@ export default function ProjectToolbar({
       <div className="w-full lg:w-52">
 
         <Select
+          value={sort}
+          onChange={(e) => onSortChange(e.target.value)}
           options={sortOptions}
         />
 

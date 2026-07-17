@@ -16,29 +16,45 @@ export default function ProjectsView() {
   const [search, setSearch] = useState("");
   const [priorityFilter, setPriorityFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
+  const [sortBy, setSortBy] = useState("updated");
   const handleCreateProject = (project: Project) => {
   setProjects((prev) => [...prev, project]);
 };
-const filteredProjects = projects.filter((project) => {
-  const matchesSearch =
-    project.name.toLowerCase().includes(search.toLowerCase()) ||
-    project.description.toLowerCase().includes(search.toLowerCase());
+const filteredProjects = projects
+  .filter((project) => {
+    const matchesSearch =
+      project.name.toLowerCase().includes(search.toLowerCase()) ||
+      project.description.toLowerCase().includes(search.toLowerCase());
 
-  const matchesPriority =
-    priorityFilter === "all" ||
-    project.priority.toLowerCase() === priorityFilter;
+    const matchesPriority =
+      priorityFilter === "all" ||
+      project.priority.toLowerCase() === priorityFilter;
 
-  const matchesStatus =
-    statusFilter === "all" ||
-    project.status.toLowerCase().replace(" ", "-") === statusFilter;
+    const matchesStatus =
+      statusFilter === "all" ||
+      project.status.toLowerCase() === statusFilter;
 
-  return (
-    matchesSearch &&
-    matchesPriority &&
-    matchesStatus
-  );
-});
+    return (
+      matchesSearch &&
+      matchesPriority &&
+      matchesStatus
+    );
+  })
+  .sort((a, b) => {
+    switch (sortBy) {
+      case "name":
+        return a.name.localeCompare(b.name);
 
+      case "progress":
+        return b.progress - a.progress;
+
+      case "deadline":
+        return new Date(a.deadline).getTime() - new Date(b.deadline).getTime();
+
+      default:
+        return b.id - a.id;
+    }
+  });
   return (
     <main className="min-h-screen space-y-8">
 
@@ -56,6 +72,11 @@ const filteredProjects = projects.filter((project) => {
 
         status={statusFilter}
         onStatusChange={setStatusFilter}
+
+        sort={sortBy}
+        onSortChange={setSortBy}
+
+  
 
         onCreateProject={() => setOpen(true)}
     />
