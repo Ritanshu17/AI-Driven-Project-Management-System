@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, Plus } from "lucide-react";
+import { Search, Plus, LayoutGrid, Table2} from "lucide-react";
 
 import {
   Button,
@@ -44,6 +44,11 @@ interface ProjectToolbarProps {
   sort: string;
   onSortChange: (value: string) => void;
 
+  
+
+  view: "grid" | "table";
+  onViewChange: (view: "grid" | "table") => void;
+
   onCreateProject: () => void;
 }
 
@@ -60,61 +65,32 @@ export default function ProjectToolbar({
 
   sort,
   onSortChange,
+
+  view,
+  onViewChange,
+
   onCreateProject,
 }: ProjectToolbarProps) {
-  return (
-    <div className="flex flex-col gap-4 p-6">
+return (
+  <div className="space-y-6">
 
-      {/* Search */}
+    {/* Top Right Controls */}
+    <div className="flex justify-end items-center gap-2">
+      <Button
+        variant={view === "grid" ? "primary" : "outline"}
+        size="icon"
+        onClick={() => onViewChange("grid")}
+      >
+        <LayoutGrid size={18} />
+      </Button>
 
-      <div className="flex-1">
-
-        <Input
-          value={search}
-          onChange={(e) => onSearchChange(e.target.value)}
-          placeholder="Search Projects..."
-          leftIcon={<Search size={18} />}
-        />
-
-      </div>
-
-      {/* Priority */}
-
-      <div className="w-full lg:w-48">
-
-        <Select
-          value={priority}
-          onChange={(e) => onPriorityChange(e.target.value)}
-          options={priorityOptions}
-        />  
-
-      </div>
-
-      {/* Status */}
-
-      <div className="w-full lg:w-48">
-
-        <Select
-          value={status}
-          onChange={(e) => onStatusChange(e.target.value)}
-          options={statusOptions}
-        />
-
-      </div>
-
-      {/* Sort */}
-
-      <div className="w-full lg:w-52">
-
-        <Select
-          value={sort}
-          onChange={(e) => onSortChange(e.target.value)}
-          options={sortOptions}
-        />
-
-      </div>
-
-      {/* Button */}
+      <Button
+        variant={view === "table" ? "primary" : "outline"}
+        size="icon"
+        onClick={() => onViewChange("table")}
+      >
+        <Table2 size={18} />
+      </Button>
 
       <Button
         leftIcon={<Plus size={18} />}
@@ -122,8 +98,36 @@ export default function ProjectToolbar({
       >
         New Project
       </Button>
-
     </div>
-  );
-  
+
+    {/* Search & Filters */}
+    <div className="flex flex-col gap-4">
+      <Input
+        value={search}
+        onChange={(e) => onSearchChange(e.target.value)}
+        placeholder="Search Projects..."
+        leftIcon={<Search size={18} />}
+      />
+
+      <Select
+        value={priority}
+        onChange={(e) => onPriorityChange(e.target.value)}
+        options={priorityOptions}
+      />
+
+      <Select
+        value={status}
+        onChange={(e) => onStatusChange(e.target.value)}
+        options={statusOptions}
+      />
+
+      <Select
+        value={sort}
+        onChange={(e) => onSortChange(e.target.value)}
+        options={sortOptions}
+      />
+    </div>
+
+  </div>
+);
 }

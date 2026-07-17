@@ -8,6 +8,7 @@ import ProjectToolbar from "./ProjectToolbar";
 import ProjectGrid from "./ProjectGrid";
 import CreateProjectModal from "./CreateProjectModal";
 import { Project } from "@/components/projects/data/types";
+import ProjectTable from "./ProjectTable";
 
 export default function ProjectsView() {
 
@@ -17,6 +18,7 @@ export default function ProjectsView() {
   const [priorityFilter, setPriorityFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const [sortBy, setSortBy] = useState("updated");
+  const [view, setView] = useState<"grid" | "table">("grid");
   const handleCreateProject = (project: Project) => {
   setProjects((prev) => [...prev, project]);
 };
@@ -76,14 +78,23 @@ const filteredProjects = projects
         sort={sortBy}
         onSortChange={setSortBy}
 
+        view={view}
+        onViewChange={setView}
+
   
 
         onCreateProject={() => setOpen(true)}
     />
 
-      <ProjectGrid
-          projects={filteredProjects}
-      />
+      {view === "grid" ? (
+          <ProjectGrid
+              projects={filteredProjects}
+          />
+      ) : (
+          <ProjectTable
+              projects={filteredProjects}
+          />
+      )}
 
       <CreateProjectModal
         open={open}
