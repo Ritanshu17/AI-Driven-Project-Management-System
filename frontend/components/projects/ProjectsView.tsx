@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import PageHeader from "@/components/ui/PageHeader";
 import { projects as initialProjects } from "./data/projects";
+import { tasks as initialTasks } from "./data/tasks";
 import ProjectToolbar from "./ProjectToolbar";
 import ProjectGrid from "./ProjectGrid";
 import CreateProjectModal from "./CreateProjectModal";
@@ -15,6 +16,7 @@ export default function ProjectsView() {
 
   const [open, setOpen] = useState(false);
   const [projects, setProjects] = useState(initialProjects);
+  const [tasks, setTasks] = useState(initialTasks);
   const [search, setSearch] = useState("");
   const [priorityFilter, setPriorityFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -96,7 +98,9 @@ const filteredProjects = projects
       )}
 
       {view === "kanban" && (
-        <KanbanBoard />
+        <KanbanBoard
+            tasks={tasks}
+        />
       )}
 
       <CreateProjectModal
