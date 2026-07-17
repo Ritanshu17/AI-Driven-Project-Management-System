@@ -8,3 +8,20 @@ export interface Project {
   members: number;
   deadline: string;
 }
+
+export interface Task {
+  id: number;
+  title: string;
+  description: string;
+
+  priority: "Low" | "Medium" | "High" | "Critical";
+
+  status:
+    | "Backlog"
+    | "Todo"
+    | "In Progress"
+    | "Review"
+    | "Done";
+
+  assignee: string;
+}
