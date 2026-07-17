@@ -2,6 +2,7 @@
 
 import TaskCard from "./TaskCard";
 import { Task } from "@/components/projects/data/types";
+import { useDroppable } from "@dnd-kit/core";
 
 interface KanbanColumnProps {
   title: string;
@@ -12,8 +13,14 @@ export default function KanbanColumn({
   title,
   tasks,
 }: KanbanColumnProps) {
+  const { setNodeRef, isOver } = useDroppable({
+  id: title,
+});
   return (
-    <div className="min-w-[320px] rounded-xl bg-[var(--background-secondary)] p-4">
+    <div
+      ref={setNodeRef}
+      className={`min-w-[320px] rounded-xl bg-[var(--surface)] p-4 transition-colors ${isOver ? "ring-2 ring-[var(--accent)]" : ""} `}
+    >
       <h2 className="mb-4 font-semibold">
         {title} ({tasks.length})
       </h2>
