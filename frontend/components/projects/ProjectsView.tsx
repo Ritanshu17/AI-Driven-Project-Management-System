@@ -8,13 +8,15 @@ import { tasks as initialTasks } from "./data/tasks";
 import ProjectToolbar from "./ProjectToolbar";
 import ProjectGrid from "./ProjectGrid";
 import CreateProjectModal from "./CreateProjectModal";
-import { Project } from "@/components/projects/data/types";
+import { Project, Task } from "@/components/projects/data/types";
 import ProjectTable from "./ProjectTable";
 import KanbanBoard from "./kanban/kanbanBoard";
+import { DragEndEvent } from "@dnd-kit/core";
+
 
 export default function ProjectsView() {
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); 
   const [projects, setProjects] = useState(initialProjects);
   const [tasks, setTasks] = useState(initialTasks);
   const [search, setSearch] = useState("");
@@ -25,6 +27,25 @@ export default function ProjectsView() {
   const handleCreateProject = (project: Project) => {
   setProjects((prev) => [...prev, project]);
 };
+const handleTaskDragEnd = (
+  event: DragEndEvent
+) => {
+  const { active, over } = event;
+
+  if (!over) return;
+
+  setTasks((prev) =>
+    prev.map((task) =>
+      task.id === active.id
+        ? {
+            ...task,
+            status: over.id as Task["status"],
+          }
+        : task
+    )
+  );
+};
+
 const filteredProjects = projects
   .filter((project) => {
     const matchesSearch =
@@ -99,8 +120,9 @@ const filteredProjects = projects
 
       {view === "kanban" && (
         <KanbanBoard
-            tasks={tasks}
-        />
+          tasks={tasks}
+          onDragEnd={handleTaskDragEnd}
+      />
       )}
 
       <CreateProjectModal
