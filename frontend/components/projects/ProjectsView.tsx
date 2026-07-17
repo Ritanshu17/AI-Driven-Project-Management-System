@@ -9,6 +9,7 @@ import ProjectGrid from "./ProjectGrid";
 import CreateProjectModal from "./CreateProjectModal";
 import { Project } from "@/components/projects/data/types";
 import ProjectTable from "./ProjectTable";
+import KanbanBoard from "./kanban/kanbanBoard";
 
 export default function ProjectsView() {
 
@@ -18,7 +19,7 @@ export default function ProjectsView() {
   const [priorityFilter, setPriorityFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const [sortBy, setSortBy] = useState("updated");
-  const [view, setView] = useState<"grid" | "table">("grid");
+  const [view, setView] = useState<"grid" | "table" | "kanban">("grid");
   const handleCreateProject = (project: Project) => {
   setProjects((prev) => [...prev, project]);
 };
@@ -86,14 +87,16 @@ const filteredProjects = projects
         onCreateProject={() => setOpen(true)}
     />
 
-      {view === "grid" ? (
-          <ProjectGrid
-              projects={filteredProjects}
-          />
-      ) : (
-          <ProjectTable
-              projects={filteredProjects}
-          />
+      {view === "grid" && (
+        <ProjectGrid projects={filteredProjects} />
+      )}
+
+      {view === "table" && (
+        <ProjectTable projects={filteredProjects} />
+      )}
+
+      {view === "kanban" && (
+        <KanbanBoard />
       )}
 
       <CreateProjectModal

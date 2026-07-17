@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, Plus, LayoutGrid, Table2} from "lucide-react";
+import { Search, Plus, LayoutGrid, Table2, SquareKanban} from "lucide-react";
 
 import {
   Button,
@@ -46,8 +46,8 @@ interface ProjectToolbarProps {
 
   
 
-  view: "grid" | "table";
-  onViewChange: (view: "grid" | "table") => void;
+  view: "grid" | "table" | "kanban";
+  onViewChange: (view: "grid" | "table" | "kanban") => void;
 
   onCreateProject: () => void;
 }
@@ -90,6 +90,14 @@ return (
         onClick={() => onViewChange("table")}
       >
         <Table2 size={18} />
+      </Button>
+
+      <Button
+        variant={view === "kanban" ? "primary" : "outline"}
+        size="icon"
+        onClick={() => onViewChange("kanban")}
+      >
+        <SquareKanban size={18} />
       </Button>
 
       <Button
