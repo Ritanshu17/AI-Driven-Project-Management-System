@@ -8,7 +8,20 @@ import {
 
 export default function AuthBranding() {
   return (
-    <div className="relative flex h-full w-full flex-col justify-between overflow-hidden border-r border-[var(--border)] bg-[var(--background)] p-12">
+<div
+  className="
+    relative
+    flex
+    h-full
+    w-full
+    items-center
+    justify-center
+    border-r
+    border-[var(--border)]
+    bg-[var(--background)]
+    px-10
+  "
+>
 
       {/* Background Glow */}
 

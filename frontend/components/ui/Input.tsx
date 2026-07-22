@@ -8,6 +8,9 @@ interface InputProps
   error?: string;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
+  validate?: (value: string) => boolean;
+  successMessage?: string;
+  errorMessage?: string;
 }
 
 export default function Input({

@@ -7,6 +7,8 @@ import AuthLayout from "./AuthLayout";
 
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
+import Divider from "./Divider";
+import SocialLogin from "./SocialLogin";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -81,15 +83,17 @@ export default function LoginForm() {
             Sign In
         </Button>
 
-        <p className="text-center text-sm text-[var(--muted)]">
+        <Divider />
 
-            Don't have an account?{" "}
+        <SocialLogin />
 
+            <p className="text-center text-sm text-[var(--muted)]">
+                Don't have an account?{" "}
             <Link
             href="/register"
             className="font-medium text-[var(--accent)] hover:underline"
             >
-            Create one
+                Create one
             </Link>
 
         </p>

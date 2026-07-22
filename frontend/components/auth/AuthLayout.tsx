@@ -20,13 +20,13 @@ export default function AuthLayout({
 
         {/* Left Branding */}
 
-        <div className="hidden lg:flex lg:w-2/5">
+        <div className="hidden lg:flex lg:w-1/2">
           <AuthBranding />
         </div>
 
         {/* Right Form */}
 
-        <div className="flex flex-1 items-center justify-center px-6 py-12">
+        <div className="flex w-full lg:w-1/2 items-center justify-center px-12 py-12">
           <div className=" w-full max-w-lg rounded-3xl border border-white/10 bg-[var(--surface)]/90 backdrop-blur-xl p-10 shadow-2xl ">
 
             <div className="mb-10 text-center">
