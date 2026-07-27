@@ -39,25 +39,27 @@ export default function CreateProjectModal({
 }: CreateProjectModalProps) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [deadline, setDeadline] = useState("");
   const [priority, setPriority] = useState("medium");
   const [status, setStatus] = useState("planning");
 
   const handleSubmit = () => {
   if (!name.trim()) return;
 
-  onCreate({
-    id: Date.now(),
-    name,
-    description,
-    progress: 0,
-    priority,
-    status,
-    members: 1,
-    deadline: "No Deadline",
-  });
-
+ onCreate({
+  id: Date.now(),
+  name,
+  description,
+  progress: 0,
+  priority,
+  status,
+  members: 0,
+  deadline,
+  order: Date.now(),
+});
   setName("");
   setDescription("");
+  setDeadline("");
   setPriority("medium");
   setStatus("planning");
 
@@ -114,6 +116,13 @@ export default function CreateProjectModal({
           value={status}
           onChange={(e) => setStatus(e.target.value)}
           options={statusOptions}
+        />
+
+        <Input
+          label="Deadline"
+          type="date"
+          value={deadline}
+          onChange={(e) => setDeadline(e.target.value)}
         />
 
       </div>

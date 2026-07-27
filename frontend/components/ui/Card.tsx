@@ -1,8 +1,11 @@
 "use client";
 
-import { ReactNode } from "react";
+import {
+  HTMLAttributes,
+  ReactNode,
+} from "react";
 
-interface CardProps {
+interface CardProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   className?: string;
 }
@@ -10,10 +13,18 @@ interface CardProps {
 export default function Card({
   children,
   className = "",
+  ...props
 }: CardProps) {
   return (
     <div
-      className={` rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[var(--accent)] hover:shadow-lg ${className}`}
+      className={`
+        rounded-xl
+        border
+        border-[var(--border)]
+        bg-[var(--surface)]
+        ${className}
+      `}
+      {...props}
     >
       {children}
     </div>

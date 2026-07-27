@@ -23,8 +23,7 @@ export default function KanbanColumn({
   );
   const { setNodeRef, isOver } = useDroppable({
   id: title,
-  
-  
+
 });
   return (
     <div
