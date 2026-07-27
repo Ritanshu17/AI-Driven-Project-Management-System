@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import {
   MoreVertical,
   Users,
@@ -19,6 +21,7 @@ type BadgeVariant =
   | "info";
 
 interface ProjectCardProps {
+  id: string | number;
   name: string;
   description: string;
   progress: number;
@@ -29,6 +32,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({
+  id,
   name,
   description,
   progress,
@@ -37,6 +41,7 @@ export default function ProjectCard({
   members,
   deadline,
 }: ProjectCardProps) {
+  const router = useRouter();
 
   const priorityVariant: BadgeVariant =
     priority === "Critical"
@@ -53,7 +58,10 @@ export default function ProjectCard({
       : "default";
 
   return (
-    <Card className="p-6">
+    <Card
+      className="cursor-pointer p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+      onClick={() => router.push(`/projects/${id}`)}
+    >
 
       {/* Header */}
 
@@ -71,7 +79,13 @@ export default function ProjectCard({
 
         </div>
 
-        <button className="rounded-lg p-2 hover:bg-[var(--border)]">
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className="rounded-lg p-2 hover:bg-[var(--border)]"
+        >
           <MoreVertical size={18} />
         </button>
 
