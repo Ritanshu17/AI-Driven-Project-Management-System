@@ -12,10 +12,16 @@ export interface Project {
 
 export interface Task {
   id: number;
+
   title: string;
+
   description: string;
 
-  priority: "Low" | "Medium" | "High" | "Critical";
+  priority:
+    | "Low"
+    | "Medium"
+    | "High"
+    | "Critical";
 
   status:
     | "Backlog"
@@ -25,5 +31,12 @@ export interface Task {
     | "Done";
 
   assignee: string;
+
   order: number;
+
+  dueDate: string;
+
+  createdAt: string;
+
+  updatedAt: string;
 }
