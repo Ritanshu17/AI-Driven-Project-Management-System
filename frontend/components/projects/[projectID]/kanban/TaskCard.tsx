@@ -2,17 +2,15 @@
 
 import Badge from "@/components/ui/Badge";
 import { Task } from "@/components/projects/data/types";
-import { useState } from "react";
-import { Button } from "@/components/ui";
-import TaskModal from "./TaskModal";
 
 interface TaskCardProps {
   task: Task;
+  onClick?: () => void;
 }
 
 
 
-export default function TaskCard({ task }: TaskCardProps) {
+export default function TaskCard({ task, onClick }: TaskCardProps) {
   const priorityVariant =
     task.priority === "Critical"
       ? "danger"
@@ -21,39 +19,29 @@ export default function TaskCard({ task }: TaskCardProps) {
       : task.priority === "Medium"
       ? "info"
       : "default";
-    
-  const [taskModalOpen, setTaskModalOpen] = useState(false);
 
 
-  return (
-    <div
 
-      className=" rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 shadow-sm cursor-grab active:cursor-grabbing transition-all duration-200 hover:shadow-md hover:-translate-y-1 transition-transform duration-200 ease-out"
-    >
-      <Badge variant={priorityVariant}>
-        {task.priority}
-      </Badge>
+return (
+  <div
+    onClick={onClick}
+    className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-4 shadow-sm cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+  >
+    <Badge variant={priorityVariant}>
+      {task.priority}
+    </Badge>
 
-      <h3 className="mt-3 font-semibold">
-        {task.title}
-      </h3>
+    <h3 className="mt-3 font-semibold">
+      {task.title}
+    </h3>
 
-      <p className="mt-2 text-sm text-[var(--muted-foreground)]">
-        {task.description}
-      </p>
+    <p className="mt-2 text-sm text-[var(--muted-foreground)]">
+      {task.description}
+    </p>
 
-      <p className="mt-4 text-xs text-[var(--muted-foreground)]">
-        {task.assignee}
-      </p>
-
-      <Button onClick={() => setTaskModalOpen(true)}>
-          Add Task
-      </Button>
-
-      <TaskModal
-        open={taskModalOpen}
-        onOpenChange={setTaskModalOpen}
-      />
-    </div>
-  );
+    <p className="mt-4 text-xs text-[var(--muted-foreground)]">
+      {task.assignee}
+    </p>
+  </div>
+);
 }

@@ -7,9 +7,10 @@ import TaskCard from "./TaskCard";
 
 interface Props {
   task: Task;
+  onClick: ()=> void;
 }
 
-export default function DraggableTaskCard({ task }: Props) {
+export default function DraggableTaskCard({ task, onClick }: Props) {
   const {
     attributes,
     listeners,
@@ -35,7 +36,10 @@ const style = {
       style={style}
       className="cursor-grab active:cursor-grabbing transition-transform duration-200 ease-out"
     >
-      <TaskCard task={task} />
+      <TaskCard
+        task={task}
+        onClick={onClick}
+      />
     </div>
   );
 }

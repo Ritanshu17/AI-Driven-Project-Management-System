@@ -19,22 +19,25 @@ const columns = [
 ] as const;
 
 interface KanbanBoardProps {
-  tasks: Task[];
-  activeTask: Task | null;
+    tasks: Task[];
 
-  onDragStart: (event: DragStartEvent) => void;
-  onDragEnd: (event: DragEndEvent) => void;
+    activeTask: Task | null;
+
+    onDragStart: (event: DragStartEvent) => void;
+
+    onDragEnd: (event: DragEndEvent) => void;
+
+    onTaskClick: (task: Task) => void;
 }
 
 export default function KanbanBoard({
-  tasks,
-  activeTask,
-  onDragStart,
-  onDragEnd,
+    tasks,
+    activeTask,
+    onDragStart,
+    onDragEnd,
+    onTaskClick,
 }: KanbanBoardProps) {
-// const handleDragEnd = (event: DragEndEvent) => {
-//   console.log(event);
-// };
+
   return (
   <DndContext
     onDragStart={onDragStart}
@@ -46,9 +49,8 @@ export default function KanbanBoard({
         <KanbanColumn
           key={column}
           title={column}
-          tasks={tasks.filter(
-            (task) => task.status === column
-          )}
+          tasks={tasks.filter(task => task.status === column)}
+          onTaskClick={onTaskClick}
         />
       ))}
 

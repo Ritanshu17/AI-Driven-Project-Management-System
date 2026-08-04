@@ -1,6 +1,5 @@
 "use client";
 
-import TaskCard from "./TaskCard";
 import { Task } from "@/components/projects/data/types";
 import { useDroppable } from "@dnd-kit/core";
 import DraggableTaskCard from "@/components/projects/[projectID]/kanban/DraggableTaskCard";
@@ -9,6 +8,7 @@ import DraggableTaskCard from "@/components/projects/[projectID]/kanban/Draggabl
 interface KanbanColumnProps {
   title: string;
   tasks: Task[];
+  onTaskClick: (task: Task) => void;
 
 }
 
@@ -16,6 +16,7 @@ interface KanbanColumnProps {
 export default function KanbanColumn({
   title,
   tasks,
+  onTaskClick,
 
 }: KanbanColumnProps) {
   const sortedTasks = [...tasks].sort(
@@ -37,8 +38,9 @@ export default function KanbanColumn({
       <div className="space-y-4">
         {sortedTasks.map((task) => (
         <DraggableTaskCard
-          key={task.id}
-          task={task}
+            key={task.id}
+            task={task}
+            onClick={() => onTaskClick(task)}
         />
       ))}
       </div>

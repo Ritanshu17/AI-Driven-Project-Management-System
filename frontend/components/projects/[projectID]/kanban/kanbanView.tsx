@@ -1,5 +1,6 @@
 "use client";
 
+import TaskModal from "./TaskModal";
 import { useState } from "react";
 import {
   DragEndEvent,
@@ -15,6 +16,17 @@ import { Task } from "@/components/projects/data/types";
 export default function KanbanView() {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [activeTask, setActiveTask] = useState<Task | null>(null);
+
+  
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+
+  const [taskModalOpen, setTaskModalOpen] = useState(false);
+
+  //click handler
+  const handleTaskClick = (task: Task) => {
+    setSelectedTask(task);
+    setTaskModalOpen(true);
+  };
 
   // When dragging starts
   const handleDragStart = (event: DragStartEvent) => {
@@ -74,10 +86,18 @@ export default function KanbanView() {
       />
 
       <KanbanBoard
-        tasks={tasks}
-        activeTask={activeTask}
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
+          tasks={tasks}
+          activeTask={activeTask}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          onTaskClick={handleTaskClick}
+      />
+
+      <TaskModal
+          open={taskModalOpen}
+          onOpenChange={setTaskModalOpen}
+          mode="view"
+          task={selectedTask}
       />
 
     </main>
