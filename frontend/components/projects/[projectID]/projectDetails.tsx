@@ -1,5 +1,6 @@
 "use client";
 import { Project } from "@/components/projects/data/types";
+import KanbanView from "@/components/projects/[projectID]/kanban/kanbanView";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -167,6 +168,12 @@ export default function ProjectDetails({
           <p className="mt-4 text-sm text-[var(--muted)]">
             {project.members} members are working on this project.
           </p>
+
+          {/* Kanban Board */}
+
+          <div className="border-t border-[var(--border)] pt-8">
+            <KanbanView />
+          </div>
 
         </div>
 
